@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form
+      id="uploadForm"
+      method="post"
+      th:action="@{/kimdemo}"
+      enctype="multipart/form-data">
+      <label>Name Supplier</label>
+      <input name="name"><br>
+      <label>Address</label>
+      <input name="address"><br>
+      <label>PhoneNumber</label>
+      <input name="phoneNumber"><br>
+      <input id="input-file" type="file" name="logoSupplier" accept="image/png, image/jpeg" />
+      <button class="btn btn-sm btn-outline-success float-right" type="submit">
+        Upload
+      </button>
+    </form>
+    
+    
+    <div
+      th:if="${message != null}"
+      class="alert alert-secondary alert-dismissible fade show text-center message mt-3"
+      role="alert">
+      [[${message}]]
+      <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+</body>
+</html>

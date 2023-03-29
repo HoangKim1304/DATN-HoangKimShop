@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>Register Account Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+		<!-- DATE-PICKER -->
+		<link rel="stylesheet" th:href="@{/vendor/date-picker/css/datepicker.min.css}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" th:href="@{/css/style_register.css}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<style type="text/css">
+		
+
+.file-input__input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input__label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: #4245a8;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.file-input__label svg {
+  height: 16px;
+  margin-right: 4px;
+}
+
+		</style>
+	</head>
+	<body style="background-color: #e3cbf5">
+	
+	
+	
+		<div class="wrapper">
+		
+            <form style="margin-left: 35%;" th:action="@{/shopping-with-me/users/exists-username}" id="wizard" method="post" th:object="${formRegisterCustomer}" enctype="multipart/form-data">
+        		<!-- SECTION 1 -->
+                
+                <section>
+                    <div class="inner" style="height: auto;">
+                    	<a href="#" class="avartar">
+                    		<img id="output" class="img-rounded" th:src="@{/img/avartar.png}" alt="" style="width: 128px; height: 126px;">
+                    	</a>
+                    	<div class="form-row form-group">
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" placeholder="First Name" name="firstName">
+                    		</div>
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    			<span id="checkUserName" style="color: red;"></span>
+                    			<input type="text" class="form-control" id="username" placeholder="Username" name="username" >
+                    			<i class="zmdi zmdi-email small"></i>
+                    			<br>
+                    			<span style="color: red; font-size: 10px;" th:if="${checkUsername != ''}">[[${checkUsername}]]</span>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    			<input type="password" class="form-control" placeholder="Password" name="password">
+                    			<i class="zmdi zmdi-lock-open small"></i>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" placeholder="Email" name="email">
+                    			<i class="zmdi zmdi-email small"></i>
+                    			<br>
+                    			<span style="color: red; font-size: 10px;" th:if="${checkEmail != ''}">[[${checkEmail}]]</span>
+                    			
+                    		</div>
+                    	</div>
+                    	
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" placeholder="Phone" name="phoneNumber">
+                    			<i class="zmdi zmdi-smartphone-android"></i>
+                    			<br>
+                    			<span style="color: red; font-size: 10px;" th:if="${checkPhone != ''}">[[${checkPhone}]]</span>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" placeholder="Address" name="address">
+                                <i class="zmdi zmdi-map small"></i>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    		<span style="margin-right: 20px"><b>Birthday: </b></span>
+                    			<input type="Date" name="birthday">
+                                <i class="zmdi zmdi-account-box-o small"></i>
+
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                    		<span style="margin-right: 20px"><b>Your avata: </b></span>
+                    			<div class="file-input">
+                    				<input id="file-input" name="fileavata" class="file-input__input" accept="image/png, image/jpeg" type="file" onchange="loadFile(event)"/>
+                    				<label class="file-input__label" for="file-input">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="upload"
+          class="svg-inline--fa fa-upload fa-w-16"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512">
+          <path
+            fill="currentColor"
+            d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+          ></path>
+        </svg>
+        <span>Upload file</span></label>
+                    			
+                    			</div>
+  
+                    			
+                                <i class="zmdi zmdi-account-box-o small"></i>
+
+                    		</div>
+                    	</div>
+                    	<div class="form-row" style="display: flex;justify-content: center;">
+                    		<button type="submit" class="btn btn-primary" style="cursor: pointer;">Create account</button>
+                    		<button type="button" class="btn btn-secondary" style="cursor: pointer;margin-left: 3%">Cancel</button>
+                    	</div>
+                    	
+                    </div>
+                    
+                </section>
+                
+				
+      
+            </form>
+		</div>
+<div>
+</div>
+	<script type="text/javascript">
+  var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+  
+  
+  
+  
+</script>
+
+</body>
+</html>
