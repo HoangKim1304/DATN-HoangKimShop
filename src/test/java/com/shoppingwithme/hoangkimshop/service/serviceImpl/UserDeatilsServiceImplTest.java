@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class UserDeatilsServiceImplTest {
 
+
 	@Test
 	void test() {
 		fail("Not yet implemented");
