@@ -25,72 +25,10 @@
     <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet"  type="text/css">
     <link th:href="@{/css/slicknav.min.css}" rel="stylesheet"  type="text/css">
     <link th:href="@{/css/style_index_user.css}" rel="stylesheet"  type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
     
-    <style type="text/css">
-    	#pageMessages {
-		  position: fixed;
-		  bottom: 15px;
-		  right: 15px;
-		  width: 30%;
-		}
-		.alert {
-		  position: relative;
-		}
-		.alert .close {
-		  position: absolute;
-		  top: 5px;
-		  right: 5px;
-		  font-size: 1em;
-		}
-		
-		.alert .fa {
-		  margin-right:.3em;
-		}
-		#kim_1{
-    	background-image :  url(img/categories/category-1.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    	#kim_2{
-    	background-image :  url(img/categories/category-2.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    	#kim_3{
-    	background-image :  url(img/categories/category-3.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    	#kim_4{
-    	background-image :  url(img/categories/category-4.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    	#kim_5{
-    	background-image :  url(img/categories/category-5.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    	#kim_6{
-    	background-image :  url(img/banner/banner-3.jpg);
-    	background-repeat: no-repeat;
-		background-size: cover;
-		background-position: top center;
-    	}
-    </style>
 </head>
 
-<body onload="myFunction()">
+<body>
     <!-- Page Preloder -->
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -99,10 +37,11 @@
         <ul class="offcanvas__widget">
             <li><span onclick="searchprodct()" class="icon_search search-switch"></span></li>
             <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
+            	<span class="tip">0</span>
+                
             </a></li>
             <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
+                <span class="tip">0</span>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
@@ -165,17 +104,20 @@
                             	
                             </li>
                             <li>
-	                            <a th:href="@{/shopping-with-me/likeproduct}" ><span class="icon_heart_alt"></span>
+	                            <a href="#" ><span class="icon_heart_alt"></span>
 	                                <div class="tip">
 	                                		<p th:if="${session.sizeproductlike ==''}" style="color: white;" >0</p>
 	                                		<p th:if="${session.sizeproductlike > 0}" style="color: white;" th:text="${session.sizeproductlike}"></p>
-	                                </div>	  
+	                                </div>
+	                             
+										  
 	                            </a>
                             </li>
                             <li><a th:href="@{/shopping-with-me/cart}"><span class="icon_bag_alt"></span>
                                 <div class="tip">
-                                	<p th:if="${session.sizecart ==''}" style="color: white;" >0</p>
-                               		<p th:if="${session.sizecart > 0}" style="color: white;" th:text="${session.sizecart}"></p>
+                                	<div >
+                                		<p style="color: white;" >0</p>
+                                	</div>
                                
                                 </div>
                                 
@@ -191,65 +133,7 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div id="kim_1" class="categories__item categories__large__item">
-                    <div class="categories__text">
-                        <h1>Women’s fashion</h1>
-                        <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                        edolore magna aliquapendisse ultrices gravida.</p>
-                        <p>[[${women}]]</p>
-                        <a href="#">Shop now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div id="kim_2" class="categories__item">
-                            <div class="categories__text">
-                                <h4>Men’s fashion</h4>
-                                <p>[[${men}]]</p>
-                                <a href="#">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div id="kim_3" class="categories__item">
-                            <div class="categories__text">
-                                <h4>Kid’s fashion</h4>
-                                <p>[[${kid}]]</p>
-                                <a href="#">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div id="kim_4" class="categories__item">
-                            <div class="categories__text">
-                                <h4>Cosmetics</h4>
-                                [[${cosmetics}]]
-                                <a href="#">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div id="kim_5" class="categories__item">
-                            <div class="categories__text">
-                                <h4>Accessories</h4>
-                                <p>[[${accessories}]]</p>
-                                <a href="#">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Categories Section End -->
+
 
 <!-- Product Section Begin -->
 <section class="product spad">
@@ -257,7 +141,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4">
                 <div class="section-title">
-                    <h4>New product</h4>
+                    <h4>Sản phẩm yêu thích</h4>
                 </div>
             </div>
 
@@ -272,96 +156,21 @@
                     	
                         <ul class="product__hover">
                             <li><a th:href="@{'/shopping-with-me/product-detail/' + ${product.id}}"><span class="arrow_expand"></span></a></li>
-                            <li><a th:onclick="addLikeproduct([[${product.id}]])" href="#"><span class="icon_heart_alt"></span></a></li>
+                            
                             <li><a th:href="@{'/shopping-with-me/cart/add-item/' + ${product.id}}"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a th:href="@{'/shopping-with-me/product-detail/' + ${product.id}}">[[${product.name}]]</a></h6>
                         
-                        <div class="product__price">$ 59.0</div>
+                        <div class="product__price">[[${product.price}]]</div>
                     </div>
                 </div>
             </div>
             </div>
-            <div class="row" style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 3%;">
-				<nav aria-label="Pagination" th:if="${totalPages > 0}">
-			      <ul class="pagination justify-content-center ">
-			        <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
-			          <a class="page-link"  th:href="@{'/?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
-			                           + 'page=' + '1' + '&size=' + ${pageSize} }"
-			  			title="First Page" rel="tooltip"> << 
-			  		</a>
-			        </li>
-			        <li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
-			          <a class="page-link" th:href="@{'/?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
-			                           + 'page=' + ${currentPage - 1} + '&size=' + ${pageSize} }" title="Previous Page">Trước đó</a>
-			        </li>
-			        <li class="page-item disabled" th:if="${currentPage - 2 > 1}">
-			          <a class="page-link" href="#">...</a>
-			        </li>
-			        <li class="page-item" th:classappend="${page == currentPage} ? 'active'"
-			          th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
-			          <a class="page-link" 
-			          th:href="@{'/?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
-			                           + 'page=' + ${page} + '&size=' + ${pageSize}}"
-			           title="Page"> [[${page}]]</a>
-			        </li>
-			        <li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
-			          <a class="page-link" href="#">...</a>
-			        </li>
-			        <li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
-			        <a class="page-link"
-			        	th:href="@{'/?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
-			                           + 'page=' +${currentPage + 1} + '&size=' + ${pageSize}}" title="Next Page">Tiếp theo
-			        </a>
-			          
-			        </li>
-			        <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
-			        	<a class="page-link"
-			        	th:href="@{'/?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
-			                           + 'page=' + ${totalPages} + '&size=' + ${pageSize}}"
-			             title="Last Page"> >>
-			        	</a>
-			          
-			        </li>
-			      </ul>
-			    </nav>
-</div>
+            </div>
+ </section>          
 
-<!-- Banner Section Begin -->
-<section id="kim_6" class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-7 col-lg-8 m-auto">
-                <div class="banner__slider owl-carousel">
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Women’s Fashion Collection</span>
-                            <h1>The Project Hoang Kim</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Men's Fashion Collection</span>
-                            <h1>The Project Hoang Kim</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                    <div class="banner__item">
-                        <div class="banner__text">
-                            <span>The Kid’s Collection</span>
-                            <h1>The Project Hoang Kim</h1>
-                            <a href="#">Shop now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Banner Section End -->
 
 
 
@@ -537,19 +346,6 @@
         </div>
     </div>
 </div>
-<div id="pageMessages">
-
-</div>
-<div>
-	<input hidden="true" id="error" type="text" th:value="${error}">
-</div>
-<div class="container123">
-  <button hidden="true" id="btnsuccess" class="btn btn-success" onclick="createAlert('','Nice Work!','Đã thêm sản phẩm vào danh sách yêu thích của bạn.','success',true,true,'pageMessages');">Add Success Alert</button>
-  <button hidden="true" id="btnerror" class="btn btn-danger" onclick="createAlert('Opps!','Sản phẩm này không tồn tại.','danger',true,false,'pageMessages');">Add Danger Alert</button>
-  <button hidden="true" id="btnwarning" class="btn btn-warning" onclick="createAlert('','','Bạn cần phải đăng nhập để thực hiện chức năng này.','warning',false,true,'pageMessages');">Add Warning Alert</button>
-  <button hidden="true" id="btninfo" class="btn btn-info" onclick="createAlert('BTDubs','','Sản phẩm này bạn đã có trong danh sách yêu thích của bạn.','info',false,true,'pageMessages');">Add Info Alert</button>
-  
-</div>
 
 <!-- Search End -->
 
@@ -565,133 +361,10 @@
 <script th:src="@{/js/jquery.nicescroll.min.js}"></script> 
 <script th:src="@{/js/main.js}"></script> 
 <script type="text/javascript">
-
-	function myFunction(){
-		var error=document.getElementById("error").value;
-		if(error !=''){
-			document.getElementById("btnwarning").click();
-		}
-	}
-	
 	function showFormSearch(){
 		document.getElementById("searchForm").style.display = "block";
 	}
-	function addLikeproduct(productid){
-		/* alert("Mã sp la: "+productid); */
-		$.ajax({  
-		 	 type: "POST",   
-		     url : "/shopping-with-me/likeproduct/"+productid,
-		     dataType: "json",
-		     success : function(response) {
-		     console.log(response);
-		    
-		    var finalResponse = JSON.stringify(response);
-		    
-		    if(response==-2){
-		    	document.getElementById("btnwarning").click();
-		    	/* alert("Bạn phải đăng nhập thì mới thêm được sản phẩm yêu thích"); */
-		    	console.log(response);
-		    }else if(response==-1){
-		    	document.getElementById("btnerror").click();
-		    	/* alert("Sản phẩm này không tồn tại"); */
-		 		console.log(response);
-		    }else if(response==0){
-		    	document.getElementById("btnsuccess").click();
-		    	/* alert("Đã thêm thành công sản phẩm yêu thích :)"); */
-		 		console.log(response);
-		    }else if(response==-3){
-		    	document.getElementById("btninfo").click();
-		    	/* alert("Sản phẩm này bạn đã yêu thích rồi :))"); */
-		 		console.log(response);
-		    }
-	    },
-
-		     error: function (response){
-		    	 alert("Đã có lỗi xảy ra");
-			 		console.log(response);
-		      }
-			    
-	   });
-	}
-	function createAlert(title, summary, details, severity, dismissible, autoDismiss, appendToId) {
-		  var iconMap = {
-		    info: "fa fa-info-circle",
-		    success: "fa fa-thumbs-up",
-		    warning: "fa fa-exclamation-triangle",
-		    danger: "fa ffa fa-exclamation-circle"
-		  };
-
-		  var iconAdded = false;
-
-		  var alertClasses = ["alert", "animated", "flipInX"];
-		  alertClasses.push("alert-" + severity.toLowerCase());
-
-		  if (dismissible) {
-		    alertClasses.push("alert-dismissible");
-		  }
-
-		  var msgIcon = $("<i />", {
-		    "class": iconMap[severity] // you need to quote "class" since it's a reserved keyword
-		  });
-
-		  var msg = $("<div />", {
-		    "class": alertClasses.join(" ") // you need to quote "class" since it's a reserved keyword
-		  });
-
-		  if (title) {
-		    var msgTitle = $("<h4 />", {
-		      html: title
-		    }).appendTo(msg);
-		    
-		    if(!iconAdded){
-		      msgTitle.prepend(msgIcon);
-		      iconAdded = true;
-		    }
-		  }
-
-		  if (summary) {
-		    var msgSummary = $("<strong />", {
-		      html: summary
-		    }).appendTo(msg);
-		    
-		    if(!iconAdded){
-		      msgSummary.prepend(msgIcon);
-		      iconAdded = true;
-		    }
-		  }
-
-		  if (details) {
-		    var msgDetails = $("<p />", {
-		      html: details
-		    }).appendTo(msg);
-		    
-		    if(!iconAdded){
-		      msgDetails.prepend(msgIcon);
-		      iconAdded = true;
-		    }
-		  }
-		  
-
-		  if (dismissible) {
-		    var msgClose = $("<span />", {
-		      "class": "close", // you need to quote "class" since it's a reserved keyword
-		      "data-dismiss": "alert",
-		      html: "<i class='fa fa-times-circle'></i>"
-		    }).appendTo(msg);
-		  }
-		  
-		  $('#' + appendToId).prepend(msg);
-		  
-		  if(autoDismiss){
-		    setTimeout(function(){
-		      msg.addClass("flipOutX");
-		      setTimeout(function(){
-		        msg.remove();
-		      },1000);
-		    }, 5000);
-		  }
-		}
-
+	
 	
 	
 </script>

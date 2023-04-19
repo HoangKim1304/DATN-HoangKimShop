@@ -53,4 +53,16 @@ public class CategoryRestController {
 		entity.setModifydate(new Date());
 		return "{\"status\":\"success\"}";
 	}
+	
+	@GetMapping("/admin/product-category/delete/{categoryId}")
+	public boolean updateDeleteFlage(@PathVariable(name = "categoryId") Long categoryId) {
+		System.out.println("Cate gory id update delete flag: "+categoryId);
+		ProductCategoryEntity deleteCategory=categoryService.getCategorybyId(categoryId).get();
+		deleteCategory.setDeleteflag(true);
+		ProductCategoryEntity check=categoryService.saveCategory(deleteCategory);
+		if(check!=null)
+			return true;
+		return false;
+		
+	}
 }

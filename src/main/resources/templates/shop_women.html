@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HoangKimShop-Women</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/elegant-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/jquery-ui.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/magnific-popup.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet"  type="text/css">
+    <link th:href="@{/css/slicknav.min.css}" rel="stylesheet"  type="text/css">
+    <link th:href="@{/css/style_index_user.css}" rel="stylesheet"  type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="#">Women’s</a></li>
+                            <li><a href="#">Men’s</a></li>
+                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">Product Details</a></li>
+                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <a href="#">Login</a>
+                            <a href="#">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                        <div class="sidebar__categories">
+                            <div class="section-title">
+                                <h4>Categories</h4>
+                            </div>
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-heading active">
+                                            <a >Women</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a >Men</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a >Kids</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a >Accessories</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a >Cosmetic</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="searchform" th:action="@{/shopping-with-me/woment123}" method="post" th:object="${search}">
+                        	
+		                       <input name="listsupplier" type="text" hidden="true" value="" id="suppliers">
+		                       <input name="listsize" type="text" hidden="true" value="" id="sizes">
+		                       <input name="maxprice" type="text" hidden="true" value="" id="minprice">
+		                       <input name="minprice" type="text" hidden="true" value="" id="maxprice">
+                       			
+                        	
+                        </form>
+                        <div class="sidebar__filter">
+                            <div class="section-title">
+                                <h4>Shop by price</h4>
+                            </div>
+                            <div class="filter-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                data-min="33" data-max="99"></div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <p>Price:</p>
+                                        <input type="text" id="minamount"  >
+                                        <input type="text" id="maxamount" >
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="search()">Search</button>
+                            <!-- <a href="#">Filter</a> -->
+                        </div>
+                        <div class="sidebar__sizes">
+                            <div class="section-title">
+                                <h4>Shop by size</h4>
+                            </div>
+                            <div >
+                                <div th:each="size : ${listSize}">
+                                	<label  >
+                                		 <input class="size" th:id="'listsize'+${size.id}" type="checkbox" th:value="${size.id}" th:onchange="addSize([[${size.id}]])">
+	                                    [[${size.name}]]
+	                                   
+                                	</label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="sidebar__color">
+                            <div class="section-title">
+                                <h4>Shop by supplier</h4>
+                            </div>
+                            <div >
+                                <div th:each="supplier : ${listSupplier}">
+                                	<label   >
+                                		 <input class="supplier" th:id="'listsupplier'+${supplier.id}" type="checkbox" th:value="${supplier.id}" th:onchange="addSupplier([[${supplier.id}]])">
+	                                    [[${supplier.name}]]
+	                                   
+                                	</label>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6" th:each="product : ${listProductshow}">
+                            <div class="product__item">
+                                <div class="product__item__pic ">
+                                <img style="height: 350px;" th:src="@{${product.thumbnail}}" alt="${product.name}" class="set-bg" />
+                                   <!--  <div class="label new">New</div> -->
+                                    <ul class="product__hover">
+                                        <li><a th:href="@{'/shopping-with-me/product-detail/' + ${product.id}}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a th:href="@{'/shopping-with-me/product-detail/' + ${product.id}}">[[${product.name}]]</a></h6>
+                                    
+                                    <div class="product__price">[[${product.price}]]</div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+    <!-- Instagram Begin -->
+    <div class="instagram">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                    <img alt="" th:src="@{/img/instagram/insta-1.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" >
+                <img alt="" th:src="@{/img/instagram/insta-2.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-3.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-4.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-5.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-6.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        cilisis.</p>
+                        <div class="footer__payment">
+                            <a href="#"><img th:src="@{/img/payment/payment-1.png}" alt=""></a>
+	                        <a href="#"><img th:src="@{/img/payment/payment-2.png}" alt=""></a>
+	                        <a href="#"><img th:src="@{/img/payment/payment-3.png}" alt=""></a>
+	                        <a href="#"><img th:src="@{/img/payment/payment-4.png}" alt=""></a>
+	                        <a href="#"><img th:src="@{/img/payment/payment-5.png}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Orders Tracking</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <h6>NEWSLETTER</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+   	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/mixitup.min.js}"></script>
+	<script th:src="@{/js/jquery.countdown.min.js}"></script>
+	<script th:src="@{/js/jquery.slicknav.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.nicescroll.min.js}"></script> 
+	<script th:src="@{/js/main.js}"></script> 
+	<script type="text/javascript">
+		
+		
+		
+		
+		function addSupplier(idsupplier){
+			var listsupplier=new Array();
+			var suppliers = document.getElementsByClassName("supplier");
+			for (var i=0, iLen=suppliers.length; i<iLen; i++) {
+				if(suppliers[i].checked){
+					listsupplier.push(suppliers[i].value);
+				}
+				
+			} 
+			/* alert(listsupplier); */
+			document.getElementById("suppliers").value = listsupplier;
+			/*  maxprice, minprice, sizes, suppliers searchform*/
+		}
+		
+		function addSize(idsize){
+			var listsize=new Array();
+			var sizes=document.getElementsByClassName("size");
+			for (var i=0, iLen=sizes.length; i<iLen; i++) {
+				if(sizes[i].checked){
+					listsize.push(sizes[i].value);
+				}
+				
+			} 
+			/* alert(listsize); */
+			document.getElementById("sizes").value = listsize;
+			
+		}
+		
+		function  search(){
+			
+			var price1=document.getElementById("maxamount").value;
+			var maxprice=price1.substring(1);
+			document.getElementById("maxprice").value=parseInt(maxprice);
+			
+			var price2=document.getElementById("minamount").value;
+			var minprice=price2.substring(1);
+			document.getElementById("minprice").value=parseInt(minprice);
+			
+			/* alert("Max price: "+document.getElementById("maxprice").value);
+			alert("Min price: "+document.getElementById("minprice").value); */
+			document.getElementById("searchform").submit(); 
+		}
+		
+	</script>
+</body>
+
+</html>

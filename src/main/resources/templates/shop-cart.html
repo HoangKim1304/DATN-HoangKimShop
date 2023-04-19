@@ -14,16 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
     <!-- Css Styles -->
-   <!--  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"> -->
+ 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/elegant-icons.css}" rel="stylesheet" type="text/css">
@@ -154,141 +148,63 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
+                                	<th style="width: 5%;"></th>
+                                    <th style="width: 35%;">Product</th>
+                                    <th style="width: 15%;">Size Availae</th>
+                                    <th style="width: 15%;">Price</th>
+                                    <th style="width: 15%;">Quantity</th>
+                                    <th style="width: 15%;">Total</th>
+                                    <th style="width: 5%;"></th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img th:src="@{/img/shop-cart/cp-1.jpg}" alt="">
+                                <tr th:id="'tr'+${cart.id}" th:each="cart : ${listCartItem}">
+                                	<td style="padding-right: 30px;" class="cart__close"><span style="background-color: #cbc7f0; color: black;" class="icon_close" th:onclick="deleteCartItem([[${cart.id}]])"></span></td>
+                                    <td class="cart__product__item" style="width: 35%;">
+                                    	
+                                        <img style="width: 150px;" th:src="@{${cart.url}}"alt="">
                                         <div class="cart__product__item__title">
-                                            <h6>Chain bucket bag</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
+                                        <h6 th:text="${cart.nameProduct}">Chain bucket bag</h6>  
                                         </div>
                                     </td>
-                                    <td class="cart__price">$ 150.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
+                                    <td class="cart__product__item" style="width: 15%;">
+                                    	<select th:onchange="updateCart([[${cart.id}]])" th:id="'sizeid'+${cart.id}" th:with="listSize=${cart.listSizeByProductId}" style="width: 80px">
+                                    		<option selected="selected" th:value="${cart.sizeid}">[[${cart.nameSize}]]</option>
+                                    		<option th:if="${cart.sizeid != size .id}" th:each="size : ${listSize}" th:value="${size .id}" th:text="${size.name}" value="">Address</option>
+                                    	</select>
+                                        
                                     </td>
-                                    <td class="cart__total">$ 300.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__price" th:id="'pricePerProduct'+${cart.id}" th:text="${cart.pricePerProduct}" style="width: 15%;">$ 150.0</td>
+                                    <td class="cart__quantity" style="width: 15%;">
+                                        
+                                            <input style="width: 80px" th:id="'quantity'+${cart.id}" th:onclick="updateCart([[${cart.id}]])" type="number" th:value="${cart.quantity}">
+                                           
+                                        
+                                    </td>
+                                    <td style="width: 15%;" class="cart__total" th:id="'price'+${cart.id}" th:text="${cart.price}">$ 300.0</td>
+                                    
+                                    <td style="width: 5%; padding: 20px;"> <input th:onchange="updateOrder([[${cart.id}]])" class="Checked" style="transform: scale(1.5);" type="checkbox" th:id="'cartid'+${cart.id}" th:value="${cart.id}" name="ids"></td>
                                 </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img th:src="@{/img/shop-cart/cp-2.jpg}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Zip-pockets pebbled tote briefcase</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 170.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img th:src="@{/img/shop-cart/cp-3.jpg}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Black jean</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 85.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img th:src="@{/img/shop-cart/cp-4.jpg}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Cotton Shirt</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 55.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 110.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <form id="myform" th:action="@{/shopping-with-me/order}" method="post">
+            	<input type="text" name="idsArray" value="" id="idsArray" hidden="true">
+            </form>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn">
-                        <a href="#">Continue Shopping</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-2">
+                <div class="col-lg-6"></div>
+                <div style="float: right;" class="col-lg-5 offset-lg-2">
                     <div class="cart__total__procced">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
+                            <li>Total quantity <span id="totalquantity">0</span></li>
+                            <li>Total price<span id="totalprice">0</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="#" id="order" onclick="getAllIdItemCart()" class="primary-btn">Order</a>
                     </div>
                 </div>
             </div>
@@ -449,10 +365,129 @@
 	<script th:src="@{/js/jquery-ui.min.js}"></script>
 	<script th:src="@{/js/mixitup.min.js}"></script>
 	<script th:src="@{/js/jquery.countdown.min.js}"></script>
-	<script th:src="@{js/jquery.slicknav.js}"></script>
+	<script th:src="@{/js/jquery.slicknav.js}"></script>
 	<script th:src="@{/js/owl.carousel.min.js}"></script>
 	<script th:src="@{/js/jquery.nicescroll.min.js}"></script> 
 	<script th:src="@{/js/main.js}"></script> 
+	<script type="text/javascript">
+	var totalprice=0;
+	var totalquantity=0;
+	function updateCart(cartItemId){
+		
+		
+		var sizeid="sizeid"+cartItemId;
+		var quantity="quantity"+cartItemId;
+		var pricePerProduct="pricePerProduct"+cartItemId;
+		var price="price"+cartItemId;
+		var valuePricePerProduct=document.getElementById(pricePerProduct).textContent;
+		var valueQuantity=document.getElementById(quantity).value;
+		
+		document.getElementById(price).innerHTML = valuePricePerProduct*valueQuantity;
+		
+		
+		var sizeId=document.getElementById(sizeid).value;
+		var Quantity=document.getElementById(quantity).value;
+		$.ajax({  
+		 	 type: "POST",   
+		     url : "/shopping-with-me/cart/update/"+cartItemId+"/"+sizeId+"/"+Quantity,
+		     dataType: "json",
+		     success : function(response) {
+		    console.log(response);
+		    
+		    var finalResponse = JSON.stringify(response);
+		    
+		    if(response==false){
+		    	alert("Không thể update sản phẩm vào giỏ hàng tư phia DB");
+		    }
+		  		
+			 		console.log(response);
+		    	 		    	 
+		     },
+		     
+		     error: function (response){
+		    	 alert("Không thể update sản phẩm vào giỏ hàng");
+			 		console.log(response);
+		      }
+			    
+	   });
+		
+	}
+	
+	function deleteCartItem(cartItemId){
+		
+		
+		$.ajax({  
+		 	 type: "POST",   
+		     url : "/shopping-with-me/cart/delete/"+cartItemId,
+		     dataType: "json",
+		     success : function(response) {
+		    console.log(response);
+		    
+		    var finalResponse = JSON.stringify(response);
+		    
+		    if(response==true){
+		    	var rowid="tr"+cartItemId;
+		    	var row = document.getElementById(rowid);
+			    row.parentNode.removeChild(row);
+		    	
+		    }else{
+		    	alert("Không thể xóa sản phẩm vào giỏ hàng");
+		    }
+		  		
+			 		
+		    	 		    	 
+		     },
+		     
+		     error: function (response){
+		    	 alert("Không thể xóa sản phẩm vào giỏ hàng");
+			 		
+		      }
+			    
+	   });
+		
+	}
+		
+	function getAllIdItemCart(){
+		var checkboxes = document.getElementsByName("ids");
+		
+		  var checkboxesChecked = [];
+		  
+		  for (var i=0; i<checkboxes.length; i++) {
+		    
+		     if (checkboxes[i].checked) {
+		    	 
+		        checkboxesChecked.push(checkboxes[i].value);
+		     }
+		  }
+		  
+		  document.getElementById("idsArray").value = checkboxesChecked;
+		  document.getElementById("myform").submit();
+	}
+	
+	
+	
+	function updateOrder(idcart){
+		var id="cartid"+idcart;
+		var idprice="price"+idcart;
+		var idquantity="quantity"+idcart;
+		var valuequantity=parseInt(document.getElementById(idquantity).value);
+		var valueprice=parseInt(document.getElementById(idprice).textContent.trim());
+		var beforeQuantity=parseInt(document.getElementById("totalquantity").textContent.trim());
+		var beforePrice=parseInt(document.getElementById("totalprice").textContent.trim());
+		
+		if(document.getElementById(id).checked == true){
+			beforeQuantity+=valuequantity;
+			beforePrice=parseInt(beforePrice)+parseInt(valueprice);
+			
+		}else{
+			beforeQuantity-=valuequantity;
+			beforePrice-=valueprice;
+		}
+		document.getElementById("totalquantity").innerHTML = beforeQuantity;
+		document.getElementById("totalprice").innerHTML = beforePrice;
+		
+	}
+	</script>
 </body>
 
 </html>

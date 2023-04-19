@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HoangKimShop</title>
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Css Styles -->
+    <!-- <link th:href="@{/css/style11.css}" rel="stylesheet"> -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/elegant-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/jquery-ui.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/magnific-popup.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet"  type="text/css">
+    <link th:href="@{/css/slicknav.min.css}" rel="stylesheet"  type="text/css">
+    <link th:href="@{/css/style_index_user.css}" rel="stylesheet"  type="text/css">
+    <style type="text/css">
+    	#kim_1{
+    	background-image :  url(img/categories/category-1.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    	#kim_2{
+    	background-image :  url(img/categories/category-2.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    	#kim_3{
+    	background-image :  url(img/categories/category-3.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    	#kim_4{
+    	background-image :  url(img/categories/category-4.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    	#kim_5{
+    	background-image :  url(img/categories/category-5.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    	#kim_6{
+    	background-image :  url(img/banner/banner-3.jpg);
+    	background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top center;
+    	}
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html">
+            <img alt="" th:src="@{/img/logo.png}">
+            <!-- <img src="img/logo.png" alt=""> --></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a th:href="@{/login}">Login</a>
+            <a th:href="@{/register}">RegisterKim</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img style="width: 150px;" th:src="@{/img/logon.PNG}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a th:href="@{/shopping-with-me/woment}">Women’s</a></li>
+                            <li><a href="#">Men’s</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">Product Details</a></li>
+                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-4">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                        	<a th:if="${session.username !=''}" th:href="@{/logout}" >Logout</a>
+                        	<a th:if="${session.username !=''}">Hello: [[${session.username }]]</a>
+                            <a th:if="${session.username ==''}" th:href="@{/login}">Login</a>
+                            <a th:if="${session.username ==''}" th:href="@{/register}">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a th:href="@{/shopping-with-me/cart}"><span class="icon_bag_alt"></span>
+                                <div class="tip" th:if="${session.username !=null}">
+                                	<div th:if="${sizecart !=0}">
+                                		<p style="color: white;" th:text="${sizecart}"></p>
+                                	</div>
+                               
+                                </div>
+                                <div class="tip" th:if="${session.username ==null}">
+                                	<p style="color: white;">0</p>
+                                </div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+ 	 <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Order</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+   
+        <div class="row">
+           
+
+        </div>
+      
+        
+        
+            
+
+<!-- Banner Section Begin -->
+
+    <div class="container">
+    <div class="row" style="margin-top: 5%;"></div>
+    <div class="row" th:each="order:${listorders}" style="display: flex; border-bottom: 1px solid red; ">
+    	
+        	<div class="col-4" style="border-color: gray;">
+        		<p style="color: black;"><b>Ngày đặt:</b> <i>[[${order.orderdate}]]</i></p>
+        		<p style="color: black;"><strong>Giá trị đơn:</strong> <i>[[${order.sumprice}]]</i></p>
+        		<p style="color: black;"><strong>Phương thức thanh toán: </strong> <span style="color: black;"  th:if="${order.isonline}"><i>Online</i></span> <span style="color: black;" th:unless="${order.isonline}"><i>Sau khi nhận hàng</i></span> </p>
+        		
+        		<p style="color: black;"><strong>Số lượng sản phẩm:</strong> <i>[[${order.sumquantity}]]</i></p>
+        		<p style="color: black;" th:if="${order.vouchercode !=null}"><strong>Mã giảm giá được áp dụng:</strong> <i>[[${order.vouchercode}]]</i></p>
+        		<p style="color: black;"><strong>Trạng thái đơn hàng:</strong> <i>[[${order.namestatusorder}]]</i></p>
+        		<p th:if="${order.vouchercode !=null}"><strong>Mã voucher được áp dụng:</strong> <i>[[${order.vouchercode}]]</i> </p>
+        		<p th:if="${order.idstatusorder ==1 }"><a class="btn btn-danger" style="color: black;">Hủy đơn hàng</a></p>
+        		<p th:if="${order.idstatusorder ==2 }"><a class="btn btn-danger" style="color: black;">Hủy đơn hàng</a></p>
+        		<p th:if="${order.idstatusorder ==0 }"><a class="btn btn-danger" style="color: black;">Hủy đơn hàng</a></p>
+        	</div>
+        	<div class="col-1"></div>
+        	<div class="col-7" style="border-color: gray;">
+        	
+        		<table style="width: 100%;" class="table table-striped table-hover">
+        			<tr th:each="product:${order.listproduct}">
+        			
+        				<td style="width: 20%; margin-right: 50%;"> <img style="width: 160px;" th:src="@{${product.thumbnail}}" /> </td>
+        				
+        				<td style="width: 70%;">
+        				 		<p style="color: black;">Tên sản phẩm: [[${product.productname}]]</p>
+        				 		<p style="color: black;">Kích cỡ: [[${product.sizename}]]</p>
+        				 		<p style="color: black;">Số lượng: [[${product.quantity}]]</p>
+        				 		<p >Số tiền trên sản phẩm: [[${product.price_per_product}]]</p>     
+        				 </td>
+        			</tr>
+        		</table>
+        	</div>
+        	<hr>
+        </div>
+    </div>
+        
+   
+
+<!-- Banner Section End -->
+
+
+
+<!-- Instagram Begin -->
+<div class="instagram">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 2%;">
+            <div class="col-lg-4 col-md-4">
+                <div class="section-title">
+                    <h4>HOT PRODUCT</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                    <img alt="" th:src="@{/img/instagram/insta-1.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" >
+                <img alt="" th:src="@{/img/instagram/insta-2.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-3.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-4.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-5.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg">
+                <img alt="" th:src="@{/img/instagram/insta-6.jpg}">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Instagram End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-7">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    cilisis.</p>
+                    <div class="footer__payment">
+                        <a href="#"><img th:src="@{/img/payment/payment-1.png}" alt=""></a>
+                        <a href="#"><img th:src="@{/img/payment/payment-2.png}" alt=""></a>
+                        <a href="#"><img th:src="@{/img/payment/payment-3.png}" alt=""></a>
+                        <a href="#"><img th:src="@{/img/payment/payment-4.png}" alt=""></a>
+                        <a href="#"><img th:src="@{/img/payment/payment-5.png}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="footer__widget">
+                    <h6>Quick links</h6>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="footer__widget">
+                    <h6>Account</h6>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Orders Tracking</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                <div class="footer__newslatter">
+                    <h6>NEWSLETTER</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Email">
+                        <button type="submit" class="site-btn">Subscribe</button>
+                    </form>
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy;  Hoàng Kim</p>
+                </div>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.countdown.min.js}"></script>
+<script th:src="@{js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.nicescroll.min.js}"></script> 
+<script th:src="@{/js/main.js}"></script> 
+<script type="text/javascript">
+	function addProductToCart(productid){
+		alert("Product Id la: "+productid);
+	}
+</script>
+</body>
+
+</html>

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shoppingwithme.hoangkimshop.common.ImageInfo;
 import com.shoppingwithme.hoangkimshop.dto.request.FormProduct;
@@ -190,11 +192,11 @@ public class ProductController {
 		ModelMapper mapper= new ModelMapper();
 		
 		product=mapper.map(productEntity, ProductResponseUpdate.class);
-		System.out.println("URL hinh dai dien la: "+product.getThumbnail());
-		System.out.println("URL hinh IMG3: "+product.getImage3());
-		System.out.println("URL hinh IMG1: "+product.getImage1());
-		System.out.println("URL hinh IMG2: "+product.getImage2());
-		System.out.println("URL hinh IMG4: "+product.getImage4());
+//		System.out.println("URL hinh dai dien la: "+product.getThumbnail());
+//		System.out.println("URL hinh IMG3: "+product.getImage3());
+//		System.out.println("URL hinh IMG1: "+product.getImage1());
+//		System.out.println("URL hinh IMG2: "+product.getImage2());
+//		System.out.println("URL hinh IMG4: "+product.getImage4());
 		
 		List<SizeEntity> listSize=sizeSevice.loadAllSize();
 		
@@ -214,6 +216,7 @@ public class ProductController {
 				
 				int index=listSizeEntity.indexOf(entity);
 				dtoReponse.setQuantity(listSizeEntity.get(index).getQuantity());
+				dtoReponse.setId(listSizeEntity.get(index).getId());
 				
 			}else {
 				
@@ -239,10 +242,11 @@ public class ProductController {
 			,@RequestParam MultipartFile img1
 			,@RequestParam MultipartFile img2
 			,@RequestParam MultipartFile img3
-			,@RequestParam MultipartFile img4) {
+			,@RequestParam MultipartFile img4
+			,RedirectAttributes model) {
 		
 		ProductEntity entity=productService.findById(product.getId());
-		System.out.println("Product data: "+product);
+//		System.out.println("Product data: "+product);
 		
 		
 		if(mainImg.isEmpty() && entity.getThumbnail()==null)
@@ -253,74 +257,84 @@ public class ProductController {
 				entity.setThumbnail(mainImg.getOriginalFilename());
 				uploadServive.save(mainImg);
 			}
-			
-//			System.out.println("Main img not null");
 		}
 		if(! img1.isEmpty() )
 		{
 			entity.setImage1(img1.getOriginalFilename());
 			uploadServive.save(img1);
-//			System.out.println("Main img1 not null");
 		}
 		if(!img2.isEmpty())
 		{
 			entity.setImage2(img2.getOriginalFilename());
 			uploadServive.save(img2);
-//			System.out.println("Main img2 not null");
 		}
 		if(!img3.isEmpty())
 		{
 			entity.setImage3(img3.getOriginalFilename());
 			uploadServive.save(img3);
-//			System.out.println("Main img3 not null");
 		}
 		if(!img4.isEmpty())
 		{
 			entity.setImage4(img4.getOriginalFilename());
 			uploadServive.save(img4);
-//			System.out.println("Main img4 not null");
 		}
-		
-		entity.setModifierDate(new Date());
-		entity.setStatus(0);
-		entity.setName(product.getName());
-		entity.setCategory_id(product.getCategory_id());
-		entity.setSupplier_id(product.getSupplier_id());
-		entity.setOriganalprice(product.getOriganalprice());
-		entity.setPrice(product.getPrice());
-		entity.setShortdescription(product.getShortdescription());
-		entity.setLongdescription(product.getLongdescription());
-		
-		System.out.println("Infor of product is: "+entity.getName());
-		ProductEntity saveProduct=productService.saveProduct(entity);
-		int productId=saveProduct.getId();
-				
-		int rs=productSizeService.deleteByProductid(productId);
-		System.out.println("Ket qua la: "+rs);
-		if(saveProduct.getId()==0) {
-			return "ErrorPage";
-		}else {
-			
+		try {
+			entity.setModifierDate(new Date());
+			entity.setStatus(0);
+			entity.setName(product.getName());
+			entity.setCategory_id(product.getCategory_id());
+			entity.setSupplier_id(product.getSupplier_id());
+			entity.setOriganalprice(product.getOriganalprice());
+			entity.setPrice(product.getPrice());
+			entity.setShortdescription(product.getShortdescription());
+			entity.setLongdescription(product.getLongdescription());
+			ProductEntity saveProduct=productService.saveProduct(entity);
+			int productId=saveProduct.getId();
 			for(int i=0;i<product.getListSize().size();i++) {
-				if(product.getListSize().get(i).getSize_id()==null) {
-					continue;
-				}else {
-					if(product.getListSize().get(i).getQuantity()==0) {
-						continue;
-					}else {
-						ProductSizeEntity size= new ProductSizeEntity();
-						size.setProductid(productId);
-						size.setQuantity(product.getListSize().get(i).getQuantity());
-						size.setSize_id(product.getListSize().get(i).getSize_id());
-						size.setDatesale(new Date());
-						size.setquantitysold(0);
-						productSizeService.saveProductSizeEntity(size);
-						
-					}
+				System.out.println("product id la: "+productId);
+				Long sizeid=product.getListSize().get(i).getSize_id();
+				int sizeidint=0;
+				if(sizeid !=null) {
+					sizeidint=sizeid.intValue();
+					
 				}
+				int quantity=product.getListSize().get(i).getQuantity();
+				
+				
+					if(sizeidint !=0) {
+						ProductSizeEntity size= productSizeService.findByProductidAndSizeid(productId,sizeidint );
+						if(size ==null) {
+							size= new ProductSizeEntity();
+							size.setProductid(productId);
+							size.setQuantity(product.getListSize().get(i).getQuantity());
+							size.setSize_id(product.getListSize().get(i).getSize_id());
+							size.setDatesale(new Date());
+							size.setquantitysold(0);
+							productSizeService.saveProductSizeEntity(size);
+						}else {
+							size.setQuantity(quantity);
+							productSizeService.saveProductSizeEntity(size);
+						}
+					}else {
+						if(product.getListSize().get(i).getId() !=0 && Integer.valueOf(product.getListSize().get(i).getId()) !=null) {
+							ProductSizeEntity size= productSizeService.findById(product.getListSize().get(i).getId());
+							size.setQuantity(0);
+							productSizeService.saveProductSizeEntity(size);
+						}
+					}
+
+				
 			}
-		}
+			model.addFlashAttribute("error_update",true);
+			return "redirect:/admin/product-update/"+productId;
+			
+		} catch (Exception e) {
+			model.addFlashAttribute("error_update",false);
 			return "redirect:/admin/products/list";
+		}
+		
+
+			
 		}
 	
 	@GetMapping("admin/product-deatil/{id}")
